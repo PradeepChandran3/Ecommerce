@@ -1,0 +1,77 @@
+<!--Run Git Bash-->
+<!--PradeepChandran3-->
+<!--mepradeepvc@gmail.com-->
+<!--Rimbochi#1-->
+cd d:
+https://github.com
+git clone https://github.com/PradeepChandran3/Ecommerce.git
+cd Ecommerce/
+cd Ecommerce_Project
+<!--Add Project Shop Folder-->
+git add .
+git commit -m "added"
+git push -u origin main
+
+<!--Next-->
+https://www.pythonanywhere.com
+<!--Login-->
+<!--PradeepChandran-->
+<!--Rimbochi#1-->
+
+Consoles > Bash
+<!--Run Code-->
+pwd
+mkvirtualenv Shop --python=/usr/bin/python3.8
+git clone https://github.com/PradeepChandran3/Shop.git
+cd Shop
+ls
+cd Ecommerce_Project
+ls
+pip install django
+pip install mysql-connector-python
+pip install pillow
+pip install mysqlclient
+<!--Next-->
+Web > Add new web app > Next > Manual configuration > Python 3.8 > Next
+<!--Next-->
+Web > WSGI configuration file: >
+<!--Full Delete Without Django Code-->
+<!--Next-->
+Set Path=
+Bash Console Run "pwd"
+<!--Copy Path-->/home/PCTech/Shop/Ecommerce_Project (Example)
+<!--Paste-->wsgi > path=/home/PCTech/Shop/Ecommerce_Project (Example)
+<!--Next-->
+os.environ['DJANGO_SETTINGS_MODULE'] = 'Ecommerce_Project.settings'  (Change mysite to Ecommerce_Project)
+<!--Next-->
+File > Shop > Ecommerce_Project > Settings > ALLOWED_HOSTS = ['*'] <!--Add ['*']--> >
+<!--Next-->
+Database > Create Password > Database name: >(Example : Shopdatabase)
+<!--Next-->
+File > Shop > Ecommerce_Project > Settings > <!--(Change Database Settings)-->
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'PCTech$Shopdatabase',
+        'USER': 'PCTech',
+        'PASSWORD': 'pradeep#1',
+        'HOST': 'PCTech.mysql.pythonanywhere-services.com',
+    }
+}
+<!--Next-->
+Files > .virtualenvs/ > Shop > <!--Copy Link-->/home/PCTech/.virtualenvs/Shop
+<!--Next-->
+Web > Virtualenv > <!--Past Link-->/home/PCTech/.virtualenvs/Shop
+<!--Next-->
+Files > Shop > Ecommerce_App > Static > <!--Copy Link-->/home/PCTech/Shop/Ecommerce_Project/static
+<!--Next-->
+Web > Static Files > Enter URL: <!--Type-->/static/ > Enter Path <!--Past Link-->/home/PCTech/Shop/Ecommerce_Project/static
+<!--Next-->
+Delete Migrate Files
+<!--Next-->
+Consoles > Mysql > <!--Run Code-->show databases;
+<!--Next-->
+Consoles > Bash console 28331201
+<!--Run Code-->
+Python manage.py makemigrations
+

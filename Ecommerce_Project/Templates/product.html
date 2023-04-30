@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+        {{ Product.Description|truncatewords:155 }}
+
+{% endblock %}
+
+{% block title %}
+    {% if Category %}
+        {{ Product.Name }} - PC Store
+
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row my_prod_row_class">
+    <div class="mx_auto">
+        <p><a href="{% url 'Shop:AllProductCategory' %}">Home</a> | <a href="{{Product.Category.get_url}}">{{Product.Category}}</a> | {{Product.Name}}</p>
+       </div>
+<div class="container-fluid">
+<!--<div class="container">-->
+
+<br>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div style="min-width:18rem">
+            <img class="my_image my_image_padding" src="{{Product.Image.url}}" alt="{{Product.Name}}">
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <div>
+        <h1 class="my_prod_title">{{Product.Name}}</h1>
+        <p>₹ {{Product.Price}}</p>
+        <p class="my_title">Product Description</p>
+        <p class="text-justify my_prod_text">{{Product.Description}}</p>
+        {% if Product.Stock <= 0 %}
+        <p class="text-justify my_prod_text"><b>Out Of Stock</b></p>
+        {% else %}
+        <a class="btn btn-secondary" href="{% url 'Cart:Add_Cart' Product.id %}">Add To Cart</a>
+        {% endif %}
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

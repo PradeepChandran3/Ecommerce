@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if Category %}
+        {{ Category.Description|truncatewords:155 }}
+    {% else %}
+        Welcome PC Store Where You Can Buys Different Items....
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {% if Category %}
+        {{ Category.Name }} - PC Store
+    {% else %}
+        See Our New Collections - PC Store
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if Category %}
+    <div>
+        <div class="row my_row_class">
+            <div class="mx-auto">
+<!--                style="text-align:left;"-->
+            <p><a href ="{% url 'Shop:AllProductCategory' %}">Our Product Collections</a></p>
+        </div>
+            </div>
+    </div>
+    {% endif %}
+<div class="mx_auto">
+    {% if Category %}
+    <img class="my_image" src="{{Category.Image.url}}" alt="{{Category.Name}}">
+</div>
+    <br>
+<div>
+    <h1 class="text-center my_title">{{Category.Name}}</h1>
+    <p class="text-justify">{{Category.Description}}</p>
+</div>
+    {% else %}
+<div>
+<img class="my_image my_image_padding" src="{% static 'image/banner.png' %}" alt="Our Products">
+</div>
+    <br>
+<div>
+    <h1 class="text-center my_title">Our Product Collections</h1>
+    <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+    {% endif %}
+<div class="container-fluid">
+<!--<div class="container">-->
+    <div class="row mx_auto">
+        {% for Product in Products.object_list %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4">
+            <div class="card text-center" style="min-width:18rem;">
+                <a href="{{Product.get_url}}"><img class="card-img-top my_image" src="{{Product.Image.url}}" alt="{{Product.Name}}"></a>
+            <div class="card-body">
+                <h4>{{Product.Name}}</h4>
+                <p>₹ {{Product.Price}}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mx-auto">
+        {% if Products.paginator.num_pages > 1 %}
+
+        <hr>
+        <div class="text-center">
+            {% for pg in Products.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn-sm {% if Products.number == pg %} active {% endif %}">{{pg}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
+</div>
+
+{% endblock %}

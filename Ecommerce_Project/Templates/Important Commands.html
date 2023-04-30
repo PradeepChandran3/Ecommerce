@@ -1,0 +1,92 @@
+C:\Users\Lenovo>E:
+E:\>cd My_Projects
+E:\My_Projects>cd Python_Projects
+E:\My_Projects\Python_Projects>cd Python_Django
+E:\My_Projects\Python_Projects\Python_Django>mkvirtualenv Shop
+(Shop) E:\My_Projects\Python_Projects\Python_Django>pip install django
+<!--(Ecommerce_App) E:\My_Projects\Python_Projects\Python_Django>mkdir Ecommerce_Programe-->
+<!--(Ecommerce_App) E:\My_Projects\Python_Projects\Python_Django>cd Ecommerce_Programe-->
+(Shop) E:\My_Projects\Python_Projects\Python_Django>django-admin startproject Ecommerce_Project
+(Shop) E:\My_Projects\Python_Projects\Python_Django>cd Ecommerce_Project
+(Shop) E:\My_Projects\Python_Projects\Python_Django\Ecommerce_Project>python manage.py startapp Ecommerce_App
+(Shop) E:\My_Projects\Python_Projects\Python_Django\Ecommerce_Project>python manage.py runserver
+
+
+<!--Installation Virtual Environment-->
+pip install virtualenvwrapper-win
+
+<!--Create Virtual Environment-->
+mkvirtualenv (Custom Virtual Environment Name)
+
+<!--Application Installation-->
+pip install (App Name)
+
+<!--Create Directory-->
+mkdir (Custom Project Name)
+
+<!--Create App-->
+python manage.py startapp (Custom App Name)
+
+<!--Run Server-->
+python manage.py runserver
+
+<!--Run Virtual Environment-->
+python workon (Virtual Environment Name)
+
+<!--Create Migration-->
+python manage.py makemigrations
+python manage.py migrate
+
+<!--Create Admin Panel Custom User Name And Password-->
+python manage.py createsuperuser
+
+<!--Project URL Static Code-->
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+<!--Settings Static URL Code-->
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+<!--HTML File Static-->
+{% load static %}
+
+{% block content %}
+{% block body %}
+{% endblock %}
+
+{% csrf_token %}
+{% extends 'Example.html' %}
+{% endfor %}
+
+<!--Settings Templates Code-->
+os.path.join(BASE_DIR,'Templates')
+
+<!--Project URL Path Code-->
+path('',include("Ecommerce_App.urls"))
+
+<!--App URL Path Code-->
+from django.urls import path
+from.import views
+
+urlpatterns = [
+    path('',views.Example,name='example')
+]
+
+<!--Views Funtion-->
+def Example (request):
+    return HttpResponse("Hello")
+def Example (request):
+    return Render(request,"example.html")
+
+<!--Data Base Code-->
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Database Name (example 'NAME:'pradeep_travelproject',)
+        'USER':'root',
+        'PASSWORD':'',
